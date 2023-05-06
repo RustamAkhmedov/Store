@@ -1,0 +1,13 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.gap-10{
+    gap: 10px;
+}
+
+.mh-80{
+    min-height: 80px;
+}
+

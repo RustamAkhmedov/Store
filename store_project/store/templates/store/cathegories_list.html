@@ -1,0 +1,19 @@
+{% extends "store/index.html" %}
+
+{% block title%}
+Cathegories
+{% endblock title %}
+
+
+{% block main %}
+<main>
+    <div class="container mt-5 pt-3">
+        <ul class="list-group">
+            {% for cathegory in cathegories %}
+            <li class="list-group-item"><a href="{{cathegory.get_absolute_url}}">{{cathegory.title}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</main>
+
+{% endblock main %}

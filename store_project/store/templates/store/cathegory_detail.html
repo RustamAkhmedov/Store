@@ -1,0 +1,16 @@
+
+
+{% extends "store/index.html" %}
+
+{% block title%}
+Cathegory {{cathegory.title}}
+{% endblock title %}
+
+
+{% block main %}
+<h1>Products cathegory: "{{cathegory.title}}"</h1>
+
+{% include "store/includes/product_main.html" %}
+
+{% endblock main %}
+
