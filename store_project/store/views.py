@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Product, Cathegory
+from .models import Product, Cathegory, Order
 
 def build_template(lst,col):
     return [lst[i:i + col] for i in range(0,len(lst),col)]
@@ -28,5 +28,15 @@ def cathegory_detail(request, cathegory_id):
     cathegory = Cathegory.objects.get(id=cathegory_id)
     products = cathegory.products.all()
     return render(request, "store/cathegory_detail.html", context={"cathegory": cathegory,"product_list": build_template(products, 3)})
+
+
+def save_order(request):
+    product = Product.objects.get(id=request.POST["product_id"])
+    order = Order()
+    order.name=request.POST["user_name"]
+    order.email=request.POST["user_email"]
+    order.product = product
+    order.save()
+    return render(request, "store/order.html", context={"product": product, "user_name": order.name})
 
 
