@@ -46,6 +46,3 @@ python manage.py createsuperuser
 bei arbeit mit grafiken
 pip install pillow 
 
-#acc 
-Rustam
-277353
