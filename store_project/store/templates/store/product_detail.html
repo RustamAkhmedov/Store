@@ -1,0 +1,51 @@
+{% extends "store/index.html" %}
+
+{% block title%}
+{{product.title}}
+{% endblock title %}
+
+
+{% block main %}
+<div class="card">
+    <img src="{{product.image.url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{product.title}}</h5>
+        <p class="card-text">{{ product.info }}</p>
+        <p class="card-text"><small class="text-body-secondary">§{{product.price}}</small></p>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Buy Now
+        </button>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">{{product.title}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form role="search" method="post" action="/save_order">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="user_name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="user_name" aria-describedby="emailHelp" required
+                            name="user_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="user_email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="user_email" aria-describedby="emailHelp" required
+                            name="user_email">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <input type="hidden" name="product_id" readonly value="{{product.id}}">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

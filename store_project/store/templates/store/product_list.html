@@ -1,0 +1,7 @@
+{% extends "store/index.html" %}
+
+{% block main %}
+    {% for product in product_list %}
+        {% include "store/includes/product_main.html" %}
+    {% endfor %}
+{% endblock main %}
